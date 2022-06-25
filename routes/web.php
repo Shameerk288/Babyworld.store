@@ -41,10 +41,8 @@ Route::get('/shop', [HomeController::class, 'allproducts']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/contact', [HomeController::class, 'contact']);
 
-Route::get('/cart', [CartController::class, 'index']);
-
 Route::middleware(['auth'])->group(function () {
-    
+    Route::get('/cart', [CartController::class, 'index']);
     Route::put('/add-to-cart', [CartController::class, 'store']);
     Route::delete('/cart/{id}', [CartController::class, 'destroy']);
     Route::post('/update-cart', [CartController::class, 'update']);
