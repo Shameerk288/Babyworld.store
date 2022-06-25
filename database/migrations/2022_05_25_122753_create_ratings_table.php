@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('prod_id');
-            $table->string('stars_rated');
+            $table->integer('stars_rated');
             $table->timestamps();
         });
     }
