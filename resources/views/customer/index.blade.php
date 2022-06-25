@@ -68,7 +68,7 @@
         <div class="container py-5">
             <div class="row">
                 <h2 class="mb-3">Featured products
-                    <a href="/shop"><button class="btn btn-outline-danger float-end">Shop More</button></a>
+                    
                 </h2>
                 <div class="owl-carousel featured-carousel owl-theme">
                     @foreach ($trending_products as $trending_product)
@@ -130,14 +130,16 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="mt-3">
+                <a href="/shop"><button class="btn btn-outline-danger float-end">Shop More</button></a>
+            </div>
             </div>
         </div>
 
         <div class="container py-3">
             <div class="row">
                 <h2 class="mb-3">Trending Category
-                    <a href="/shop/category"><button class="btn btn-outline-danger float-end">Browse More
-                            Categories</button></a>
+                    
                 </h2>
                 <div class="owl-carousel featured-carousel owl-theme">
                     @foreach ($trending_categories as $trending_category)
@@ -151,11 +153,15 @@
                                     <a href="/shop/{{ $trending_category->id }}" style="text-decoration: none;">
                                         <h4>{{ $trending_category->name }}</h4>
                                     </a>
-                                    <p>{{ $trending_category->description }}</p>
+                                    <p>{{ Str::limit($trending_category->description, 30) }}</p>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="mt-3">
+                    <a href="/shop/category"><button class="btn btn-outline-danger float-end">Browse More
+                        Categories</button></a>
                 </div>
             </div>
         </div>
@@ -170,6 +176,7 @@
             autoplay: true,
             autoplayTimeout: 3000,
             autoplayHoverPause: true,
+            dots: false,
 
             responsive: {
                 0: {

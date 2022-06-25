@@ -57,7 +57,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <a href="/my-orders">
-                            Orders
+                            My Orders
                         </a>
 
                         <a href="/logout"
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="offcanvas__nav__option">
-                <a href="#"><img src="{{ asset('assets/images/icon/cart.png') }}" alt=""
+                <a href="/cart"><img src="{{ asset('assets/images/icon/cart.png') }}" alt=""
                         style="width:26px;">
                     <span style="color: red;font-size:14px;">{{ Cart::count() }}</span>
                 </a>
@@ -168,7 +168,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="header__nav__option">
 
-                            <a href="#"><img src="{{ asset('assets/images/icon/cart.png') }}" alt=""
+                            <a href="/cart"><img src="{{ asset('assets/images/icon/cart.png') }}" alt=""
                                     style="width:26px;">
                                 <span style="color: red;font-weight:bold;font-size:15px;">
                                     @if (Auth::check())

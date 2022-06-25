@@ -3513,6 +3513,7 @@ ol {
         position: absolute;
         right: 15px;
         top: 25px;
+        padding-top: 5px;
     }
     .offcanvas-menu-overlay {
         position: fixed;

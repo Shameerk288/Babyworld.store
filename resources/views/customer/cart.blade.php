@@ -108,7 +108,7 @@
 
 
                     </div>
-                    <div class="row">
+                    <div class="row pb-4">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
                                 <a href="/shop">Continue Shopping</a>
