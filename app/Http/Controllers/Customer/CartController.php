@@ -52,7 +52,7 @@ class CartController extends Controller
 
                 if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {
 
-                    return response()->json(['status' => $request->name . "already exists in cart"]);
+                    return redirect()->back()->with('status', 'This item already exists in cart');
                 } else {
 
                     $cart_items = Cart::create([
@@ -62,7 +62,7 @@ class CartController extends Controller
 
                     ]);
 
-                    return redirect('cart');
+                    return redirect()->back()->with('status', 'Product added to cart successfully');;
                 }
             }
         } else {
