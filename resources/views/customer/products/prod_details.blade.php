@@ -243,10 +243,10 @@
                                     review</button></a>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 mt-3">
                         @foreach ($reviews as $review)
                             <div class="user_review">
-                                <label for="">{{ $review->user->name }}</label>
+                                <b><label for="" style="text-decoration: underline;">{{ $review->user->name }}</label></b>
                                 <br>
 
                                 @php
