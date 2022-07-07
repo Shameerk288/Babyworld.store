@@ -132,7 +132,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="header__logo">
-                            <a href="/"><img src="{{ asset('assets/images/logo.jpg') }}" alt="Company Logo"></a>
+                            <a href="/"><img src="{{ asset('assets/images/logo.JPG') }}" alt="Company Logo"></a>
 
                         </div>
                     </div>
