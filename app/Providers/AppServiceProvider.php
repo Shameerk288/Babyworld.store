@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             
         } */
 
-        /* \URL::forceScheme('https'); */
+        \URL::forceScheme('https');
 
         view()->composer('layouts.customer', function ($view) {
 
