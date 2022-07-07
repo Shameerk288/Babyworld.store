@@ -116,7 +116,7 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="images p-3">
+                                <div class="images mt-4">
                                     <div class="text-center">
                                         <img src="{{ asset('assets/images/products/' . $product->image) }}"
                                             alt="productimage" Height="250px">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="product p-4">
-                                    <div class="mt-4 mb-3">
+                                    <div>
                                         @if ($product->trending == '1')
                                             <label style="font-size:16px;"
                                                 class="float-end badge bg-danger">Trending</label>
@@ -159,7 +159,7 @@
                                                 @endif
                                             </span>
                                         </div>
-                                        <p class="mt-3">
+                                        <p class="mt-1">
                                             {{ $product->short_description }}
                                         </p>
                                         <div>
@@ -169,10 +169,10 @@
                                                 <label class="badge bg-danger">Out Of Stock</label>
                                             @endif
                                         </div>
-                                        <div class="mt-3">
+                                        <div class="mt-2">
                                             <label for="Quantity">Quantity</label>
 
-                                            <div class="input-group text-center mb-3" style="width: 130px;">
+                                            <div class="input-group text-center" style="width: 130px;">
                                                 <button class="input-group-text decrement-btn">-</button>
                                                 <input type="text" value="1" name="quantity"
                                                     class="form-control qty-input text-center">
@@ -181,10 +181,10 @@
                                         </div>
                                     </div>
                                     @if ($product->qty > 0)
-                                        <div class="cart mt-4 align-items-center">
+                                        <div class="cart mt-3 align-items-center">
 
                                             <input type="hidden" name="id" value="{{ $product->id }}">
-                                            <button class="btn btn-primary text-uppercase mr-2 px-4" type="submit">Add To
+                                            <button class="btn btn-primary btn-sm text-uppercase" type="submit">Add To
                                                 Cart</button>
                                         </div>
                                     @endif
