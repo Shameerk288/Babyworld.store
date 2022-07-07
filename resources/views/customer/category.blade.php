@@ -31,7 +31,7 @@
                 @foreach ($categories as $category)
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card mt-3">
-                            <a href="/shop/category/{{ $category->slug }}">
+                            <a href="/shop/category/{{ $category->slug }}" class="mx-auto">
                                 <img src="{{ asset('assets/images/category/' . $category->image) }}" alt="Product Image"
                                     Height="200px">
                             </a>
