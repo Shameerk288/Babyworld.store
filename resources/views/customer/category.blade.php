@@ -29,7 +29,7 @@
             <h2 class="mb-3">All categories</h2>
             <div class="row">
                 @foreach ($categories as $category)
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+                    <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card mt-3">
                             <a href="/shop/category/{{ $category->slug }}">
                                 <img src="{{ asset('assets/images/category/' . $category->image) }}" alt="Product Image"
