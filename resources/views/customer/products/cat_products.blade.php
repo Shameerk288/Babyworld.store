@@ -73,7 +73,7 @@
                     <h2>{{ $category->name }}</h2>
                     @foreach ($products as $product)
                         @if ($product->count() > 0)
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-6">
+                            <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="card mt-3">
                                     <a href="/shop/{{ $product->slug }}" class="mx-auto">
                                         <img src="{{ asset('assets/images/products/' . $product->image) }}"
