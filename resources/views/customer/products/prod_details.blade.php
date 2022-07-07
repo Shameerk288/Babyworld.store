@@ -31,7 +31,6 @@
     }
 
     /* End of Star Rating */
-
 </style>
 
 @section('content')
@@ -83,7 +82,6 @@
         .might-like-section .might-like-product-price {
             color: #919191;
         }
-
     </style>
 
     <!-- Breadcrumb Section Begin -->
@@ -204,86 +202,86 @@
 
                 <div class="row">
                     <div class="col-md-3">
-                    <h4 class="fw-bold">Rate this product : </h4>
-                    <form action="/add-rating" method="POST">
-                        @csrf
-                        <input type="hidden" name="prod_id" value="{{ $product->id }}">
-                        <div class="rating-css">
-                            <div class="star-icon">
-                                @if ($user_rating)
-                                    @for ($i = 1; $i <= $user_rating->stars_rated; $i++)
-                                        <input type="radio" value="{{ $i }}" name="product_rating" checked
-                                            id="rating{{ $i }}">
-                                        <label for="rating{{ $i }}" class="fa fa-star"></label>
-                                    @endfor
-                                    @for ($j = $user_rating->stars_rated + 1; $j <= 5; $j++)
-                                        <input type="radio" value="{{ $j }}" name="product_rating"
-                                            id="rating{{ $j }}">
-                                        <label for="rating{{ $j }}" class="fa fa-star"></label>
-                                    @endfor
-                                @else
-                                    <input type="radio" value="1" name="product_rating" checked id="rating1">
-                                    <label for="rating1" class="fa fa-star"></label>
-                                    <input type="radio" value="2" name="product_rating" id="rating2">
-                                    <label for="rating2" class="fa fa-star"></label>
-                                    <input type="radio" value="3" name="product_rating" id="rating3">
-                                    <label for="rating3" class="fa fa-star"></label>
-                                    <input type="radio" value="4" name="product_rating" id="rating4">
-                                    <label for="rating4" class="fa fa-star"></label>
-                                    <input type="radio" value="5" name="product_rating" id="rating5">
-                                    <label for="rating5" class="fa fa-star"></label>
-                                @endif
+                        <h4 class="fw-bold">Rate this product : </h4>
+                        <form action="/add-rating" method="POST">
+                            @csrf
+                            <input type="hidden" name="prod_id" value="{{ $product->id }}">
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    @if ($user_rating)
+                                        @for ($i = 1; $i <= $user_rating->stars_rated; $i++)
+                                            <input type="radio" value="{{ $i }}" name="product_rating" checked
+                                                id="rating{{ $i }}">
+                                            <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                        @endfor
+                                        @for ($j = $user_rating->stars_rated + 1; $j <= 5; $j++)
+                                            <input type="radio" value="{{ $j }}" name="product_rating"
+                                                id="rating{{ $j }}">
+                                            <label for="rating{{ $j }}" class="fa fa-star"></label>
+                                        @endfor
+                                    @else
+                                        <input type="radio" value="1" name="product_rating" checked id="rating1">
+                                        <label for="rating1" class="fa fa-star"></label>
+                                        <input type="radio" value="2" name="product_rating" id="rating2">
+                                        <label for="rating2" class="fa fa-star"></label>
+                                        <input type="radio" value="3" name="product_rating" id="rating3">
+                                        <label for="rating3" class="fa fa-star"></label>
+                                        <input type="radio" value="4" name="product_rating" id="rating4">
+                                        <label for="rating4" class="fa fa-star"></label>
+                                        <input type="radio" value="5" name="product_rating" id="rating5">
+                                        <label for="rating5" class="fa fa-star"></label>
+                                    @endif
 
-                                <button type="submit" class="btn btn-success btn-sm">Submit Rating</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Submit Rating</button>
+                                </div>
                             </div>
-                        </div>
 
-                    </form>
-                    <div>
-                        <a href="/add-review/{{ $product->slug }}/user-review"> <button class="btn btn-link"> Add a
-                                review</button></a>
+                        </form>
+                        <div>
+                            <a href="/add-review/{{ $product->slug }}/user-review"> <button
+                                    class="btn btn-primary btn-sm"> Add a
+                                    review</button></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        @foreach ($reviews as $review)
+                            <div class="user_review">
+                                <label for="">{{ $review->user->name }}</label>
+                                <br>
+
+                                @php
+                                    $rating = App\Models\Rating::where('prod_id', $product->id)
+                                        ->where('user_id', $review->user_id)
+                                        ->first();
+                                @endphp
+
+                                @if ($rating)
+                                    @php
+                                        $user_rated = $rating->stars_rated;
+                                    @endphp
+
+                                    @for ($i = 1; $i <= $user_rated; $i++)
+                                        <i class="fa fa-star checked"></i>
+                                    @endfor
+                                    @for ($j = $user_rated; $j < 5; $j++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                @endif
+                                <small>Reviewed on {{ $review->created_at->format('d M Y') }}</small>
+                                <p>
+                                    {{ $review->user_review }}
+                                    @if ($review->user_id == Auth::id())
+                                        <a href="/edit-review/{{ $product->slug }}/user-review" class="float-end">Edit</a>
+                                    @endif
+                                </p>
+
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-md-9">
-                    @foreach ($reviews as $review)  
-                        <div class="user_review">      
-                            <label for="">{{ $review->user->name }}</label>
-                            @if ($review->user_id == Auth::id())
-                                <a href="/edit-review/{{ $product->slug }}/user-review">edit</a>
-                            @endif
-                            
-                            <br>
 
 
-                            @php
-                                $rating = App\Models\Rating::where('prod_id',$product->id)->where('user_id',$review->user_id)->first();
-                            @endphp
 
-                            @if ($rating)
-                                
-                            @php
-                                $user_rated = $rating->stars_rated
-                            @endphp
-                            
-                            @for ($i = 1; $i <= $user_rated; $i++)
-                                                <i class="fa fa-star checked"></i>
-                                            @endfor
-                                            @for ($j = $user_rated; $j < 5; $j++)
-                                                <i class="fa fa-star"></i>
-                                            @endfor
-
-                            @endif
-                            <small>Reviewed on {{ $review->created_at->format('d M Y') }}</small>
-                            <p>
-                                {{ $review->user_review }}
-                            </p>
-                        </div>
-                    @endforeach
-                </div>
-                </div>
-
-
-                
 
 
             </div>
