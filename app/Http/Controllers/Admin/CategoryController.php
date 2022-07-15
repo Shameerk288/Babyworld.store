@@ -101,7 +101,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = new Category();
+        $category = Category::find($id);
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
